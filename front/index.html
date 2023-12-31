@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<link rel="stylesheet" href="./css/geral.css">
+<link rel="stylesheet" href="./css/login.css">
+<link rel="stylesheet" href="./css/cadastro.css">
+<link rel="stylesheet" href="./css/lista.css">
+
+
+<body>
+
+    <div class="containerAlerta">
+        <h1 id="tituloAlerta"></h1>
+        <div class="informacoesAlerta">
+            <p class="informacoesUsuario" id="nomeUsuarioAlerta"></p>
+            <p class="informacoesUsuario" id="senhaUsuarioAlerta"></p>
+        </div>
+    </div>
+
+    <!--------------------------------LISTA-------------------------------------->
+
+    <section id="section_lista">
+        <div class="containerGeral" id="containerLista">
+            <h1>CADASTROS</h1>
+            <div class="listaCadastros"></div>
+            <a class="voltarLista">Voltar</a>
+        </div><!--containerLista-->
+        
+    </section><!--section_login-->
+
+    <!--------------------------------LOGIN-------------------------------------->
+
+    <section id="section_login">
+        <div class="containerGeral" id="containerLogin">
+            <h1>Login</h1>
+            <form class="containerForm">
+
+                <input class="inputForm" id="inputUser" type="text" name="email" placeholder="Insira seu usuário">
+                <input class="inputForm" id="inputPassword" type="password" name="password"
+                    placeholder="Insira sua senha">
+                <p id="alertIncorreto">Usuário ou senha incorretos!</p>
+
+                <input class="botao" id="botaoEntrar" type="button" value="Entrar">
+                <input class="botao" id="botaoCadastrar" type="button" value="Criar conta">
+            </form><!--containerForm-->
+
+            <a class="mostrarUsuarios">Mostrar usuários</a>
+        </div><!--containerLogin-->
+    </section><!--section_login-->
+
+    <!--------------------------------CADASTRO-------------------------------------->
+
+    <section id="section_cadastro">
+        <div class="containerGeral" id="containerCadastro">
+            <h1>Cadastro</h1>
+            <form class="containerForm">
+
+                <input class="inputForm" id="CadInputUser" type="text" name="email" placeholder="Insira seu usuário">
+                <input class="inputForm" id="CadInputPassword" type="password" name="password"
+                    placeholder="Insira sua senha">
+                <input class="inputForm" id="CadInputSecondPassword" type="password" name="password"
+                    placeholder="Repita sua senha">
+                <p id="senhasDiferentes">As senhas são diferentes</p>
+
+                <input class="botao" id="botaoCriarConta" type="button" value="Criar conta">
+                <input class="botao" id="botaoVoltarCadastro" type="button" value="Voltar">
+
+            </form><!--containerForm-->
+
+        </div><!--containerCadastro-->
+    </section><!--section_cadastro-->
+
+    <!-------------------------------------------------------------------------------->
+    <footer><p>Desenvolvido por: Lucas Aguilar</p></footer>
+</body>
+<script src="./js/base.js"></script>
+<script src="./js/fetch.js"></script>
+
+</html>

@@ -1,0 +1,50 @@
+#section_cadastro{
+    display: none;
+}
+
+.listaCadastros{
+    width: 80%;
+    height: 55%;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f5f5f50c;
+    border-radius: 10px;
+
+}
+.usuariosDaLista{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+}
+
+.voltarLista{
+    margin: 10px 0 0 0;
+    padding: 10px 0 0 0;
+    font-size: 12px;
+    border-top: 1px solid #33143f;
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+/* Personaliza a barra de rolagem */
+::-webkit-scrollbar {
+    width: 4px; /* Largura da barra de rolagem */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #2f024941; /* Cor da "thumb" (a parte arrastável) */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #ffffff5e; /* Cor da "track" (a parte não arrastável) */
+  }
+  
+  /* Para Firefox */
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: #6c757d #f8f9fa;
+  }

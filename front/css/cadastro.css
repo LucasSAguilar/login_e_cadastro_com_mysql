@@ -1,0 +1,44 @@
+#section_lista{
+    display: none;
+}
+
+#botaoCriarConta {
+    background-color: #79438f;
+    color: #FFFFFF;
+    margin: 10px 0 0 0;
+}
+
+#botaoCriarConta:hover {
+    background-color: #ac68c5;
+}
+
+#senhasDiferentes{
+    color: #700000;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    visibility: hidden;
+}
+
+.esqueceuSenha {
+    margin: 10px 0 0 0;
+    padding: 10px 0 0 0;
+    font-size: 12px;
+    border-top: 1px solid #33143f;
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+
+}
+
+#botaoVoltar{
+    background-color: #ffffff;
+    color: #79438f;
+    margin: 3px 0 0 0;
+}
+
+#botaoVoltar:hover {
+    background-color: #c56ce9;
+    color: #FFFFFF;
+}

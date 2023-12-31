@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@200;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 200;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #000000 url(../img/paisagem.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+
+section {
+    height: clamp(350px, 55%, 400px);
+    width: clamp(250px, 80%, 350px);
+    transition: 0.5s;
+}
+
+
+.containerGeral {
+    position: absolute;
+
+    background-color: transparent;
+    backdrop-filter: blur(1.5px);
+
+    height: clamp(350px, 55%, 400px);
+    width: clamp(250px, 80%, 350px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 2px solid #7a438f2d;
+    border-radius: 10px;
+
+    box-shadow: #00000070 5px 5px 10px 0px;
+
+    transition: opacity 0.5s;
+}
+
+.containerInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+    margin: 25px 0px 10% 0px;
+}
+
+.inputForm {
+    background: #00000094;
+    border: none;
+    color: #ffffff;
+    border: 1px solid #00000000;
+
+    border-radius: 10px;
+    width: 80%;
+    padding: 10px;
+
+    margin: 2px 0 2px 0;
+}
+
+.inputForm::placeholder {
+    color: #ffffffb7;
+}
+
+
+.botao {
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #0000004f;
+    width: 100vw;
+    color: #ffffff;
+    text-align: center;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
