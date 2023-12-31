@@ -72,7 +72,12 @@ const realizarLogin = async () => {
       inputPassword.value = "";
     }
   } catch (error) {
-    console.error("Erro na requisição de login:", error);
+    console.error(
+      "Erro na requisição de login:",
+      error,
+      " realizando login offline."
+    );
+    logarReserva(inputUser.value, inputPassword.value);
   }
 };
 
@@ -112,7 +117,12 @@ const realizarCadastro = async () => {
         CadInputSecondPassword.style.border = estilos.padrao;
       }
     } catch (err) {
-      console.error("Ocorreu um erro durante o cadastro:", err);
+      console.error(
+        "Ocorreu um erro durante o cadastro:",
+        err,
+        " será feito cadastro offline."
+      );
+      cadastrarReserva({ usuario: valorUser, senha: valorPassword });
     }
   } else {
     senhasDiferentes.style.visibility = "visible";
@@ -124,31 +134,36 @@ const realizarCadastro = async () => {
 };
 
 // --------------------------------------LISTA------------------------------------
+const listaCadastros = document.querySelector(".listaCadastros");
+
+const construirLista = (dados, i) => {
+  
+  let containerUser = document.createElement("div");
+  let pgfNome = document.createElement("p");
+  let pgfSenha = document.createElement("p");
+
+  let nome = dados[i].usuario;
+  let senha = dados[i].senha;
+
+  pgfNome.innerText = nome;
+  pgfSenha.innerText = senha;
+  containerUser.appendChild(pgfNome);
+  containerUser.appendChild(pgfSenha);
+  listaCadastros.appendChild(containerUser);
+
+  containerUser.className = "usuariosDaLista";
+};
 
 const mostrarLista = async () => {
-  const listaCadastros = document.querySelector(".listaCadastros");
   listaCadastros.innerHTML = "";
+  trocarTelas(section_login, section_lista);
 
-  trocarTelas(section_login, section_lista)
-
+  listarReserva();
   try {
     let r = await fetch(URL);
     let dados = await r.json();
     for (let i = 0; i < dados.length; i++) {
-      let containerUser = document.createElement("div");
-      let pgfNome = document.createElement("p");
-      let pgfSenha = document.createElement("p");
-
-      let nome = dados[i].usuario;
-      let senha = dados[i].senha;
-
-      pgfNome.innerText = nome;
-      pgfSenha.innerText = senha;
-      containerUser.appendChild(pgfNome);
-      containerUser.appendChild(pgfSenha);
-      listaCadastros.appendChild(containerUser);
-
-      containerUser.className = "usuariosDaLista";
+      construirLista(dados, i);
     }
   } catch (err) {
     console.log("Erro: " + err);
@@ -178,3 +193,31 @@ const botaoVoltarCadastro = document.querySelector("#botaoVoltarCadastro");
 botaoVoltarCadastro.addEventListener("click", () =>
   trocarTelas(section_cadastro, section_login)
 );
+
+// -------------- TESTAR SEM BD
+
+let contasReservas = [
+  {
+    usuario: "reserva",
+    senha: "123",
+  },
+];
+
+const cadastrarReserva = (novaReserva) => {
+  contasReservas.push(novaReserva);
+  console.log(contasReservas);
+};
+
+const logarReserva = (usuario, senha) => {
+  let dados = contasReservas.find(
+    (reserva) => reserva.usuario === usuario && reserva.senha === senha
+  );
+  alertaLogin(dados.usuario, dados.senha, "Logado com sucesso!");
+};
+
+
+const listarReserva = () => {
+  for(let i = 0; i < cadastrarReserva.length; i++){
+    construirLista(contasReservas, i)
+  }
+}
