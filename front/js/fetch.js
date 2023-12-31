@@ -64,12 +64,6 @@ const realizarLogin = async () => {
       alertIncorreto.style.visibility = "hidden";
       inputPassword.style.border = estilos.padrao;
       inputUser.style.border = estilos.padrao;
-    } else {
-      alertIncorreto.style.visibility = "visible";
-      inputPassword.style.border = estilos.erro;
-      inputUser.style.border = estilos.erro;
-
-      inputPassword.value = "";
     }
   } catch (error) {
     console.error(
@@ -77,7 +71,13 @@ const realizarLogin = async () => {
       error,
       " realizando login offline."
     );
-    logarReserva(inputUser.value, inputPassword.value);
+    let logado = logarReserva(inputUser.value, inputPassword.value);
+    if (!logado) {
+      alertIncorreto.style.visibility = "visible";
+      inputPassword.style.border = estilos.erro;
+      inputUser.style.border = estilos.erro;
+      inputPassword.value = "";
+    }
   }
 };
 
@@ -137,7 +137,6 @@ const realizarCadastro = async () => {
 const listaCadastros = document.querySelector(".listaCadastros");
 
 const construirLista = (dados, i) => {
-  
   let containerUser = document.createElement("div");
   let pgfNome = document.createElement("p");
   let pgfSenha = document.createElement("p");
@@ -194,7 +193,7 @@ botaoVoltarCadastro.addEventListener("click", () =>
   trocarTelas(section_cadastro, section_login)
 );
 
-// -------------- TESTAR SEM BD
+// --------------------------TESTAR SEM BD-------------------------------------- 
 
 let contasReservas = [
   {
@@ -205,19 +204,25 @@ let contasReservas = [
 
 const cadastrarReserva = (novaReserva) => {
   contasReservas.push(novaReserva);
-  console.log(contasReservas);
+  alertaLogin(
+    novaReserva.usuario,
+    novaReserva.senha,
+    "Cadastrado com sucesso!"
+  );
 };
 
 const logarReserva = (usuario, senha) => {
   let dados = contasReservas.find(
     (reserva) => reserva.usuario === usuario && reserva.senha === senha
   );
-  alertaLogin(dados.usuario, dados.senha, "Logado com sucesso!");
+  if (dados != undefined) {
+    alertaLogin(dados.usuario, dados.senha, "Logado com sucesso!");
+    return true;
+  }
 };
 
-
 const listarReserva = () => {
-  for(let i = 0; i < cadastrarReserva.length; i++){
-    construirLista(contasReservas, i)
+  for (let i = 0; i < contasReservas.length; i++) {
+    construirLista(contasReservas, i);
   }
-}
+};
